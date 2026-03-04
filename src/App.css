@@ -24,6 +24,8 @@ body {
   background-color: #030712;
   color: var(--text-main);
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 .survey-wrapper {
@@ -33,7 +35,9 @@ body {
   align-items: center;
   justify-content: center;
   background-image: var(--bg-gradient);
+  background-attachment: fixed;
   padding: 2rem 1rem;
+  overflow-x: hidden;
 }
 
 .survey-card {
@@ -228,6 +232,8 @@ textarea:focus {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 .response-card {
@@ -271,11 +277,24 @@ textarea:focus {
 }
 
 @media (max-width: 640px) {
+  .survey-wrapper {
+    padding: 1rem 0.5rem;
+    align-items: flex-start;
+  }
+
   .survey-card {
-    padding: 1.5rem;
+    padding: 1.5rem 1.25rem;
+    border-radius: 20px;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 100%;
   }
 
   h1 {
     font-size: 1.5rem;
+  }
+
+  .preview-section {
+    padding: 1rem;
   }
 }
