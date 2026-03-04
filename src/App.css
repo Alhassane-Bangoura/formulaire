@@ -28,15 +28,18 @@ body {
 
 .survey-wrapper {
   min-height: 100vh;
+  min-height: 100svh;
+  /* Dynamic viewport height pour mobile */
   width: 100%;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+  /* Changé de center pour éviter de couper le haut sur mobile */
   justify-content: center;
   background-image: var(--bg-gradient);
   background-attachment: fixed;
   background-size: cover;
-  padding: 1.5rem 1rem;
-  overflow-x: hidden;
+  padding: 2rem 1rem;
+  overflow-y: auto;
 }
 
 .survey-card {
@@ -50,6 +53,9 @@ body {
   padding: 3rem;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
   animation: fadeIn 0.8s ease-out;
+  margin-top: auto;
+  margin-bottom: auto;
+  /* Permet de centrer verticalement si l'écran est assez grand */
 }
 
 @keyframes fadeIn {
@@ -69,7 +75,8 @@ body {
 }
 
 h1 {
-  font-size: 2rem;
+  font-size: 1.8rem;
+  /* Légèrement réduit pour mobile */
   font-weight: 800;
   letter-spacing: -0.025em;
   margin-bottom: 0.5rem;
@@ -83,7 +90,7 @@ h1 {
   height: 6px;
   background: rgba(255, 255, 255, 0.1);
   border-radius: 999px;
-  margin: 2rem 0;
+  margin: 1.5rem 0 2rem 0;
   overflow: hidden;
 }
 
@@ -92,16 +99,17 @@ h1 {
   background: var(--primary);
   border-radius: 999px;
   transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 0 20px rgba(99, 102, 241, 0.5);
+  box-shadow: 0 0 15px rgba(99, 102, 241, 0.5);
 }
 
 .question-label {
   display: block;
-  font-size: 0.95rem;
+  font-size: 1rem;
   font-weight: 600;
   color: var(--text-main);
-  margin-bottom: 1rem;
+  margin-bottom: 1.25rem;
   letter-spacing: 0.01em;
+  line-height: 1.4;
 }
 
 .choices {
@@ -115,30 +123,38 @@ label {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  padding: 0.875rem 1rem;
+  padding: 1rem;
+  /* Padding plus généreux pour le tactile */
   background: var(--input-bg);
   border: 1px solid var(--input-border);
   border-radius: 12px;
   cursor: pointer;
   transition: all 0.2s ease;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
 }
 
-label:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.2);
-  transform: translateX(4px);
+/* Désactivation des effets de hover qui "collent" sur mobile */
+@media (hover: hover) {
+  label:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateX(4px);
+  }
+}
+
+label:active {
+  transform: scale(0.98);
 }
 
 label:has(input:checked) {
-  background: rgba(99, 102, 241, 0.1);
+  background: rgba(99, 102, 241, 0.15);
   border-color: var(--primary);
 }
 
 input[type="radio"],
 input[type="checkbox"] {
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
   accent-color: var(--primary);
   cursor: pointer;
 }
@@ -146,15 +162,16 @@ input[type="checkbox"] {
 .field-input,
 textarea {
   width: 100%;
-  padding: 0.875rem 1rem;
+  padding: 1rem;
   background: var(--input-bg);
   border: 1px solid var(--input-border);
   border-radius: 12px;
   color: #fff;
   font-family: inherit;
-  font-size: 0.9rem;
+  font-size: 1rem;
   transition: all 0.2s ease;
   margin-bottom: 0.5rem;
+  appearance: none;
 }
 
 .field-input:focus,
@@ -162,27 +179,35 @@ textarea:focus {
   outline: none;
   border-color: var(--primary);
   background: rgba(255, 255, 255, 0.08);
-  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
 }
 
 .submit-btn {
   width: 100%;
-  padding: 1rem;
+  padding: 1.125rem;
   background: var(--primary);
   color: #fff;
   border: none;
-  border-radius: 12px;
+  border-radius: 14px;
   font-size: 1rem;
   font-weight: 700;
   cursor: pointer;
   transition: all 0.2s ease;
   margin-top: 1rem;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
-.submit-btn:hover:not(:disabled) {
-  background: var(--primary-hover);
-  transform: translateY(-2px);
-  box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.4);
+@media (hover: hover) {
+  .submit-btn:hover:not(:disabled) {
+    background: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.4);
+  }
+}
+
+.submit-btn:active:not(:disabled) {
+  transform: translateY(0);
 }
 
 .submit-btn:disabled {
@@ -193,8 +218,8 @@ textarea:focus {
 
 .error-message {
   color: #fb7185;
-  font-size: 0.8rem;
-  margin-top: 0.25rem;
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
   font-weight: 500;
 }
 
@@ -205,13 +230,6 @@ textarea:focus {
   background: rgba(255, 255, 255, 0.02);
   border-radius: 16px;
   border: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.preview-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 1rem;
-  margin-top: 1rem;
 }
 
 .preview-item {
@@ -235,61 +253,69 @@ textarea:focus {
   overflow: hidden;
 }
 
-.response-card {
-  padding: 1.25rem;
-  background: rgba(255, 255, 255, 0.03);
-  border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.response-header {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 0.75rem;
-  font-size: 0.75rem;
-  color: var(--text-muted);
-}
-
-.response-body {
-  font-size: 0.875rem;
-  line-height: 1.5;
+.toast-success,
+.toast-error {
+  padding: 1.125rem;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+  font-size: 0.95rem;
 }
 
 .toast-success {
   background: #059669;
   color: #fff;
-  padding: 1rem;
-  border-radius: 12px;
-  margin-bottom: 1.5rem;
-  font-weight: 600;
-  text-align: center;
 }
 
 .toast-error {
   background: #dc2626;
   color: #fff;
-  padding: 1rem;
-  border-radius: 12px;
-  margin-bottom: 1.5rem;
-  font-weight: 600;
-  text-align: center;
 }
 
 @media (max-width: 640px) {
+  .survey-wrapper {
+    padding: 1rem 0.75rem;
+    align-items: flex-start;
+    background-attachment: scroll;
+    /* Plus performant sur mobile */
+  }
+
   .survey-card {
-    padding: 1.5rem 1.25rem;
+    padding: 2rem 1.25rem;
     border-radius: 20px;
   }
 
   h1 {
     font-size: 1.5rem;
+    line-height: 1.2;
+  }
+
+  .progress-bar-container {
+    margin: 1.25rem 0;
+  }
+
+  .question-label {
+    font-size: 0.95rem;
+  }
+
+  label {
+    padding: 0.875rem;
+    font-size: 0.9rem;
   }
 
   .preview-section {
-    padding: 1rem;
+    padding: 1.25rem;
   }
 
+  .preview-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Fix pour Safari mobile */
+@supports (-webkit-touch-callout: none) {
   .survey-wrapper {
-    padding: 1rem 0.75rem;
+    min-height: -webkit-fill-available;
   }
 }

@@ -162,7 +162,7 @@ function App() {
           <>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
               <div>
-                <h1>Sondage Solution Guinéenne</h1>
+                <h1>Solution de sondage Guinéenne</h1>
                 <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', marginBottom: '1.5rem' }}>Étape {displayStep} sur 6</p>
               </div>
             </div>
@@ -181,7 +181,7 @@ function App() {
               <div key={currentStep} className="step-fade-in">
                 {currentStep === 1 && (
                   <div>
-                    <label className="question-label">1. Est-ce que tu as déjà acheté un produit en ligne ?</label>
+                    <label className="question-label">1. Est-ce que vous avez déjà acheté un produit en ligne ?</label>
                     <div className="choices">
                       <label><input type="radio" value="oui" {...register('bought')} /> Oui, j'ai l'habitude</label>
                       <label><input type="radio" value="non" {...register('bought')} /> Non, jamais pour l'instant</label>
@@ -209,7 +209,7 @@ function App() {
 
                 {currentStep === 3 && bought === 'non' && (
                   <div>
-                    <label className="question-label">2. Pourquoi n'as-tu jamais acheté en ligne ? (choix possibles)</label>
+                    <label className="question-label">2. Pourquoi n'avez-vous jamais acheté en ligne ? (choix possibles)</label>
                     <div className="choices">
                       <label><input type="checkbox" value="manque_confiance" {...register('reasons')} /> Manque de confiance</label>
                       <label><input type="checkbox" value="peur_arnaque" {...register('reasons')} /> Crainte des arnaques</label>
@@ -222,7 +222,7 @@ function App() {
 
                 {currentStep === 4 && (
                   <div>
-                    <label className="question-label">3. Si une plateforme guinéenne sécurisée existait, est-ce que tu l’utiliserais ?</label>
+                    <label className="question-label">3. Si une plateforme guinéenne sécurisée existait, est-ce que vous l’utiliseriez ?</label>
                     <div className="choices">
                       <label><input type="radio" value="oui" {...register('would_use')} /> Oui, absolument</label>
                       <label><input type="radio" value="peut-etre" {...register('would_use')} /> Peut-être, selon l'offre</label>
@@ -233,7 +233,7 @@ function App() {
 
                 {currentStep === 5 && (
                   <div>
-                    <label className="question-label">4. Qu'est-ce qui te rassurerait le plus ?</label>
+                    <label className="question-label">4. Qu'est-ce qui vous rassurerait le plus ?</label>
                     <div className="choices">
                       <label><input type="checkbox" value="paiement_securise" {...register('reassurance')} /> Paiement en ligne sécurisé</label>
                       <label><input type="checkbox" value="avis_clients" {...register('reassurance')} /> Avis et notes clients</label>
