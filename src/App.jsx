@@ -294,7 +294,7 @@ function App() {
 
         <div className="responses-list">
           <h3 style={{ fontSize: '0.9rem', color: 'var(--text-muted)', marginBottom: '1rem', marginTop: '2rem', textTransform: 'uppercase', letterSpacing: '1px' }}>Contributions Récentes</h3>
-          <div style={{ display: 'flex', gap: '8px', overflowX: 'auto', paddingBottom: '10px' }}>
+          <div style={{ display: 'flex', gap: '8px', overflowX: 'auto', paddingBottom: '10px', width: '100%' }}>
             {responses.slice(0, 5).map(r => (
               <div key={r.id} style={{ padding: '8px 12px', background: 'rgba(255,255,255,0.05)', borderRadius: '8px', border: '1px solid var(--card-border)', fontSize: '0.75rem', whiteSpace: 'nowrap' }}>
                 {r.deja_achete_en_ligne === 'oui' ? '✅ Acheteur' : 'Prospect'} • {new Date(r.date_creation).toLocaleDateString()}
