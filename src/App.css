@@ -22,23 +22,22 @@ body {
   margin: 0;
   font-family: 'Inter', -apple-system, system-ui, sans-serif;
   background-color: #030712;
+  background-image: var(--bg-gradient);
+  background-attachment: fixed;
+  background-size: cover;
   color: var(--text-main);
   -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
 }
 
 .survey-wrapper {
   min-height: 100vh;
   min-height: 100svh;
-  /* Dynamic viewport height pour mobile */
   width: 100%;
   display: flex;
   align-items: flex-start;
-  /* Changé de center pour éviter de couper le haut sur mobile */
   justify-content: center;
-  background-image: var(--bg-gradient);
-  background-attachment: fixed;
-  background-size: cover;
-  padding: 2rem 1rem;
+  padding: 1.5rem 1rem;
   overflow-y: auto;
 }
 
@@ -46,16 +45,15 @@ body {
   width: 100%;
   max-width: 680px;
   background: var(--card-bg);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
   border-radius: 24px;
   border: 1px solid var(--card-border);
   padding: 3rem;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
   animation: fadeIn 0.8s ease-out;
   margin-top: auto;
   margin-bottom: auto;
-  /* Permet de centrer verticalement si l'écran est assez grand */
 }
 
 @keyframes fadeIn {
@@ -81,6 +79,7 @@ h1 {
   letter-spacing: -0.025em;
   margin-bottom: 0.5rem;
   background: linear-gradient(to right, #fff, #9ca3af);
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -284,6 +283,8 @@ textarea:focus {
   .survey-card {
     padding: 2rem 1.25rem;
     border-radius: 20px;
+    width: 100%;
+    /* Utilisation de toute la largeur disponible */
   }
 
   h1 {
